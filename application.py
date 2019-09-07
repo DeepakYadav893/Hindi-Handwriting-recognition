@@ -90,6 +90,6 @@ def keras_process_image(img):
     img = np.reshape(img, (-1, image_x, image_y, 1))
     return img
 
-if __name__=='__main__'
+if __name__=='__main__':
 keras_predict(model1, np.zeros((32, 32, 1), dtype=np.uint8))
 main()
