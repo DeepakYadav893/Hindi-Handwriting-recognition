@@ -31,7 +31,7 @@ def main():
         blur = cv2.medianBlur(mask, 15)
         blur = cv2.GaussianBlur(blur, (5, 5), 0)
         thresh = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
-        cnts = cv2.findContours(thresh.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
+        cnts = cv2.findContours(thresh.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)[0]
         center = None
         if len(cnts) >= 1:
             contour = max(cnts, key=cv2.contourArea(cnts))
@@ -53,7 +53,7 @@ def main():
                 blur1 = cv2.medianBlur(blackboard_gray, 15)
                 blur1 = cv2.GaussianBlur(blur1, (5, 5), 0)
                 thresh1 = cv2.threshold(blur1, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
-                blackboard_cnts = cv2.findContours(thresh1.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)[1]
+                blackboard_cnts = cv2.findContours(thresh1.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)[0]
                 if len(blackboard_cnts) >= 1:
                     cnt = max(blackboard_cnts, key=cv2.contourArea)
                     print(cv2.contourArea(cnt))
